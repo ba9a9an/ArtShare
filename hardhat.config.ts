@@ -1,3 +1,5 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import "@nomicfoundation/hardhat-ignition-ethers";
 import type { HardhatUserConfig } from "hardhat/config";
 import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
@@ -29,11 +31,17 @@ const config: HardhatUserConfig = {
       // Optional: accounts configuration
     },
     sepolia: {
+      url: process.env.SEPOLIA_RPC_URL || "",
+      accounts: process.env.SEPOLIA_PRIVATE_KEY ? [process.env.SEPOLIA_PRIVATE_KEY] : [],
+      chainId: 11155111, // Sepolia chain ID
       type: "http",
-      chainType: "l1",
-      url: configVariable("SEPOLIA_RPC_URL"),
-      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
     },
+    //sepolia: {
+    //  type: "http",
+    //  chainType: "l1",
+    //  url: configVariable("SEPOLIA_RPC_URL"),
+    //  accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
+    //},
   },
 };
 

@@ -3,7 +3,8 @@ import { ethers } from "ethers";
 async function main() {
   const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
   
-  const privateKey = "0xac..f80"; // Account #0
+  //const privateKey = "0xac..f80"; //
+  const privateKey ="0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356"
   const user1 = new ethers.Wallet(privateKey, provider);
 
   const artNFTAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
@@ -20,8 +21,8 @@ async function main() {
 
   // tokenURI, name, placed_loca
   const tx = await ArtNFT.mintItem(
-    "https://yellow-fascinating-seahorse-469.mypinata.cloud/ipfs/b.......y", 
-    "CHINA-ART", 
+    "https://yellow-fascinating-seahorse-469.mypinata.cloud/ipfs/bafybeifwe4kt56g6oj34soctb3fk3rb4n5vmb2la4rwu6dy43eoarkzi5y",
+    "FIRST-ART", 
     "Only NFT"
   );
   
