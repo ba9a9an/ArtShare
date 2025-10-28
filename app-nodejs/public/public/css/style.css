@@ -1,0 +1,186 @@
+body {
+    background-color: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Верхний хедер */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+/* Кнопка Connect Wallet */
+.wallet-btn {
+    border: 2px solid yellow;
+    background: transparent;
+    color: yellow;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.wallet-btn:hover {
+    background: yellow;
+    color: black;
+}
+
+.header input {
+    border: 2px solid yellow;
+    padding: 5px;
+    background: transparent;
+    color: white;
+}
+
+.sell-btn {
+    border: 2px solid yellow;
+    background: transparent;
+    color: yellow;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.delist-btn {
+    border: 2px solid red;
+    background: transparent;
+    color: red;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/* NFT карточки */
+.nft-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dashed #555;
+    padding: 15px;
+}
+
+.nft-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px dashed #0ff;
+    border-radius: 5px;
+}
+
+.nft-info {
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.check-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-section input {
+    border: 2px solid yellow;
+    background: transparent;
+    color: white;
+    padding: 5px;
+}
+
+.check-btn {
+    border: 2px solid yellow;
+    background: transparent;
+    color: yellow;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.buy-btn {
+    border: 2px solid yellow;
+    background: transparent;
+    color: yellow;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.buy-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Тусклая кнопка */
+.buy-btn.disabled {
+  background-color: #555;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Активная кнопка */
+.buy-btn.active {
+  background-color: #00c853; /* зеленая */
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 200, 83, 0.8);
+}
+
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+  position: relative;  /* 🔑 make it the anchor */
+}
+
+#notification-container {
+  position: absolute;
+  top: 0;                 /* align with top of .header-left */
+  left: 100%;             /* appear to the right of wallet button */
+  transform: translateX(10px);  /* little spacing */
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+/* Notifications */
+.notification {
+  display: inline-block;     /* let box size match text length */
+  padding: 12px 22px;        /* breathing room */
+  border-radius: 12px;       /* soft rounded rectangle */
+  white-space: nowrap;       /* keep text on one line */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: white;
+  background: #2196f3;       /* example color */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideIn 0.3s forwards, fadeOut 0.5s 3s forwards;
+}
+
+.notification.success { background: #4caf50; }
+.notification.error   { background: #f44336; }
+.notification.info    { background: #2196f3; }
+
+@keyframes slideIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateY(-20px); }
+}

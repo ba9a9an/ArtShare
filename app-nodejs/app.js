@@ -1,9 +1,15 @@
 import express from "express";
 import useragent from "express-useragent";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config();
 
-//  Middleware to disable caching
+app.get("/api/rpc-url", (req, res) => {
+  res.json({ rpcUrl: process.env.RPC_URL });
+});
+
+// 🔹 Middleware to disable caching
 app.use((req, res, next) => {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Pragma", "no-cache");
@@ -12,12 +18,12 @@ app.use((req, res, next) => {
   next();
 });
 
-//  Express settings
+// 🔹 Express settings
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(useragent.express());
 
-//  Routing: detect device type
+// 🔹 Routing: detect device type
 app.get("/", (req, res) => {
   const source = req.headers["user-agent"] || "";
   const isMobile = /mobile/i.test(source);
@@ -29,7 +35,7 @@ app.get("/", (req, res) => {
   }
 });
 
-//  Start server
+// 🔹 Start server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
